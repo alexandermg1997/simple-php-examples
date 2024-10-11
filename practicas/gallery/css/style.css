@@ -1,0 +1,148 @@
+/* Estilos generales */
+body {
+    padding: 20px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+/* Ajuste para la barra de navegación fija */
+.navbar {
+    display: flex;
+    flex-direction: column; /* Apila los elementos en una columna */
+    align-items: flex-start; /* Alinea los elementos al inicio (izquierda) */
+    height: auto; /* Ajusta la altura automática */
+    padding: 0.5rem 1rem;
+}
+
+/* Ajuste para los enlaces de navegación */
+.navbar-nav {
+    display: flex;
+    flex-direction: column; /* Coloca los enlaces uno debajo del otro */
+    align-items: flex-start; /* Alinea los enlaces a la izquierda */
+}
+
+/* Ajuste para el logo */
+.navbar-brand {
+    display: flex;
+    align-items: center; /* Centra el logotipo verticalmente */
+    padding-bottom: 1rem; /* Añade espacio debajo del logo */
+}
+
+/* Estilos para el toggle de tema (si está dentro del navbar) */
+.theme-toggle {
+    display: flex;
+    align-items: center; /* Centra el icono verticalmente */
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.5rem 1rem;
+    transition: none;
+    position: relative;
+    top: -5px;
+    left: -2px;
+}
+
+.theme-toggle:hover {
+    color: #fff;
+}
+
+.theme-toggle i {
+    transition: opacity 0.3s ease;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 991.98px) {
+    .navbar {
+        flex-direction: column; /* Mantiene la disposición en columna para móviles */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+        height: auto;
+    }
+
+    .navbar-nav {
+        width: 100%;
+        flex-direction: column; /* Los enlaces se apilan verticalmente */
+        align-items: flex-start; /* Mantiene la alineación a la izquierda */
+    }
+
+    .theme-toggle {
+        margin-right: 3rem; /* Espacio para el botón de toggle del navbar */
+    }
+}
+
+/* Estilos para el modo claro */
+[data-bs-theme="light"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Ajuste para mejorar la visibilidad en modo claro */
+[data-bs-theme="light"] .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.7); /* Ajusta el color del borde del botón */
+}
+
+/* Ajuste adicional para el tamaño del ícono del menú (opcional) */
+.navbar-toggler-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+/* Estilos para el modo claro */
+[data-bs-theme="light"] .navbar {
+    background-color: #f8f9fa !important;
+}
+
+[data-bs-theme="light"] .navbar-brand,
+[data-bs-theme="light"] .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+[data-bs-theme="light"] .navbar-nav .nav-link.active,
+[data-bs-theme="light"] .navbar-nav .nav-link:hover {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+[data-bs-theme="light"] .theme-toggle {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+[data-bs-theme="light"] .theme-toggle:hover {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 991.98px) {
+    .theme-toggle {
+        margin-right: 3rem; /* Espacio para el botón de toggle del navbar */
+    }
+}
+
+
+/* Estilos para el botón de volver arriba */
+#back-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: none; /* Oculto por defecto */
+}
+
+#back-to-top:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el grupo de botones de filtro */
+.btn-group {
+    margin-bottom: 20px;
+}
+
+/* Estilos para las tarjetas de estadísticas */
+#statistics .card {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#statistics .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilo para el contenido principal */
+.main-content {
+    transition: margin-top 0.3s ease; /* Suaviza el cambio de margen */
+}

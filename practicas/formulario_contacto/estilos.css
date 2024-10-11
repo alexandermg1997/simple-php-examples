@@ -1,0 +1,10 @@
+body {
+    background: linear-gradient(to right, #141e30, #243b55); /* Degradado de colores oscuros */
+    font-family: 'Roboto', sans-serif;
+    color: #fff; /* El texto debe ser claro para contrastar con el fondo oscuro */
+    min-height: 100vh; /* Asegura que el fondo cubra toda la ventana */
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}

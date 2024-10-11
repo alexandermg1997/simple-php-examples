@@ -1,0 +1,35 @@
+body {
+    background: linear-gradient(45deg, #000428, #004e92);
+    height: 100vh;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.btn-custom {
+    background: linear-gradient(45deg, #FF416C, #FF4B2B);
+    border: none;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(45deg, #FF4B2B, #FF416C);
+}
+
+.form-control:focus {
+    border-color: #7B68EE;
+    box-shadow: 0 0 0 0.2rem rgba(123, 104, 238, 0.25);
+}
+
+h2 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+form a {
+    text-decoration: none;
+}
