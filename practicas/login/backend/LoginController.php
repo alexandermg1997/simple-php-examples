@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
         $_SESSION['user'] = $result['user'];
         $_SESSION['last_activity'] = time();
-        header('Location: ../../gallery/views/index.php');
+        header('Location: ../../gallery/backend/Dashboard.php');
         exit();
     } else {
         $error_message = $result['message'];
