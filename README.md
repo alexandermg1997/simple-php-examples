@@ -6,13 +6,13 @@
 2. Navigate to the project directory: `cd project-name`
 3. Install dependencies: `composer install`
 
-4. ## Technologies
+## Technologies
 - PHP 8.3.6
 - Apache 2
 - MySQL
 - PDO for database connections
 
-- ## Project Structure
+## Project Structure
 - `src/`: Contains the source code.
   - `public/`: Publicly accessible files.
   - `private/`: Application logic.
