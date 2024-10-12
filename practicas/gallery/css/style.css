@@ -146,3 +146,86 @@ body {
 .main-content {
     transition: margin-top 0.3s ease; /* Suaviza el cambio de margen */
 }
+
+.image-item {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Duración más corta y suavizada */
+    opacity: 1;
+    transform: scale(1); /* Tamaño normal cuando es visible */
+}
+
+.image-item.hidden {
+    opacity: 0;
+    transform: scale(0.95); /* Reduce el tamaño cuando se oculta */
+    pointer-events: none;
+}
+
+.image-item.showing {
+    opacity: 0; /* Comienza oculto */
+    transform: scale(0.9); /* Aparece desde una escala menor */
+    transition: opacity 0.9s ease-in-out, transform 0.3s ease-in-out; /* Efecto suave al mostrar */
+}
+
+.image-item:hover {
+    transform: scale(1.05); /* Aumenta el tamaño cuando se hace hover */
+}
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.card.page {
+    border: none;
+    background-color: transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Esto asegura que la imagen no se salga del contenedor */
+    transition: transform 0.3s ease-in-out;
+}
+
+.card.page:hover {
+    transform: none; /* No escalamos el contenedor */
+}
+
+.card-img-top.page {
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out; /* Transición suave en la imagen */
+}
+
+.card.page:hover .card-img-top.page {
+    transform: scale(1.1); /* La imagen crece 10% en tamaño al hacer hover */
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pagination ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 10px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pagination a:hover {
+    background-color: #444;
+}
+
+.pagination .disabled a {
+    opacity: 0.5;
+    pointer-events: none;
+}

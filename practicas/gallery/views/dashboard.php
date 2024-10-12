@@ -1,3 +1,8 @@
+<?php
+global $images, $paginaActual, $imagenes, $totalPaginas;
+global $categoryStats;
+global $totalViews;
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -45,7 +50,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Galería</a>
+                    <a class="nav-link active" aria-current="page" href="#gallery">Galería</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#galleryPaginada">Galería Paginada</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#statistics">Estadísticas</a>
@@ -59,7 +67,7 @@
 <div class="main-content pt-5">
     <div class="container mb-5">
         <div class="row mt-4">
-            <div class="col-md-12">
+            <div class="col-md-12 text-center">
                 <div class="btn-group" role="group" aria-label="Filtros de imagen">
                     <button type="button" class="btn btn-outline-primary active" data-filter="all">Todas</button>
                     <button type="button" class="btn btn-outline-primary" data-filter="nature">Naturaleza</button>
@@ -70,49 +78,20 @@
         </div>
 
         <div class="row mt-4" id="gallery">
-            <?php
-            $images = [
-                ['src' => '../img/image1.jpg', 'category' => 'nature', 'title' => 'Montaña'],
-                ['src' => '../img/image2.jpg', 'category' => 'city', 'title' => 'Ciudad'],
-                ['src' => '../img/image3.jpg', 'category' => 'people', 'title' => 'Retrato'],
-                // ... Añade más imágenes aquí
-            ];
-
-            foreach ($images as $image) {
-                echo "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-3 image-item' data-category='{$image['category']}'>
-                    <div class='card'>
-                        <img src='{$image['src']}' class='card-img-top' alt='{$image['title']}' style='height: 250px; object-fit: cover;' loading='lazy'>
+            <?php foreach ($images as $image): ?>
+                <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-3 mb-3 image-item' data-category='<?php echo $image['category']; ?>'>
+                    <div class='card shadow-sm'>
+                        <img src='<?php echo $image['image_path']; ?>' class='card-img-top' alt='<?php echo $image['title']; ?>' style='height: 250px; object-fit: cover;' loading='lazy'>
                         <div class='card-body'>
-                            <h5 class='card-title'>{$image['title']}</h5>
-                            <p class='card-text'>Categoría: {$image['category']}</p>
+                            <h5 class='card-title'><?php echo $image['title']; ?></h5>
+                            <p class='card-text'>Categoría: <?php echo $image['category']; ?></p>
+                            <p class='card-text'>Vistas: <?php echo $image['views']; ?></p>
+                            <a href='#' class='btn btn-primary'>Go somewhere</a>
                         </div>
                     </div>
-                </div>";
-            }
-            ?>
+                </div>
+            <?php endforeach; ?>
         </div>
-    </div>
-</div>
-
-
-<div class="container mb-5">
-    <div class="row">
-        <?php
-        $images = glob('../img/*.jpg');
-        foreach ($images as $image) {
-            $image = basename($image);
-            echo "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-5'>
-                            <div class='card'>
-                                <img src='../img/$image' class='card-img-top' alt='...' style='height: 250px; object-fit: cover;' loading='lazy'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>Card title</h5>
-                                    <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href='#' class='btn btn-primary'>Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>";
-        }
-        ?>
     </div>
 </div>
 
@@ -121,7 +100,7 @@
         <h2 class="text-center mb-4">Estadísticas</h2>
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-2">
                     <div class="card-body">
                         <h5 class="card-title">Total de Imágenes</h5>
                         <p class="card-text display-4"><?php echo count($images); ?></p>
@@ -129,10 +108,10 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-2">
                     <div class="card-body">
                         <h5 class="card-title">Categoría más popular</h5>
-                        <p class="card-text display-4">Naturaleza</p>
+                        <p class="card-text display-4"><?php echo ucfirst($categoryStats[0]['category']); ?></p>
                     </div>
                 </div>
             </div>
@@ -140,7 +119,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Vistas totales</h5>
-                        <p class="card-text display-4">1,234</p>
+                        <p class="card-text display-4"><?php echo $totalViews; ?></p>
                     </div>
                 </div>
             </div>
@@ -148,6 +127,47 @@
     </div>
 </section>
 
+<div class="container">
+    <h2 class="text-center mb-4">Galería de imágenes</h2>
+    <div class="row mt-4" id="galleryPaginada">
+        <?php foreach ($imagenes as $image): ?>
+
+            <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-3'>
+                <div class='card shadow-sm page'>
+                    <a href="../backend/Photos.php?id=<?php echo $image['id']?>"><img src='<?php echo $image['image_path']; ?>' class='card-img-top page' alt='<?php echo $image['title']; ?>' style='height: 350px; object-fit: cover;' loading='lazy'></a>
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+    </div>
+    <div class="row mt-1">
+        <section class="pagination d-flex justify-content-center">
+            <ul>
+                <?php if ($paginaActual === 1): ?>
+                    <li class="disabled"><a href="#">&laquo;</a></li>
+                <?php else: ?>
+                    <li><a href="?pagina=<?php echo $paginaActual - 1; ?>">&laquo;</a></li>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                    <?php if ($paginaActual === $i): ?>
+                        <li class="active"><a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                    <?php else: ?>
+                        <li><a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+                <?php if ($paginaActual === $totalPaginas): ?>
+                    <li class="disabled"><a href="#">&raquo;</a></li>
+                <?php else: ?>
+                    <li><a href="?pagina=<?php echo $paginaActual + 1; ?>">&raquo;</a></li>
+                <?php endif; ?>
+            </ul>
+        </section>
+    </div>
+</div>
+
 <button id="back-to-top" class="btn btn-primary" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
 </body>
 </html>

@@ -85,7 +85,8 @@ class ImageUploader
         if (!move_uploaded_file($image['tmp_name'], $targetFile)) {
             throw new Exception("Lo siento, hubo un error al subir tu archivo. Verifica los permisos del directorio.");
         }
-        return $targetFile;
+        // Guardar la ruta relativa a partir del directorio público accesible
+        return '/simple-php-examples/practicas/gallery/img/' . basename($image['name']);
     }
 
     /**

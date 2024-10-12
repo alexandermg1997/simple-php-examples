@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryItems = document.querySelectorAll('.image-item');
     const navbarToggler = document.querySelector('.navbar-toggler');
     const mainContent = document.querySelector('.main-content');
-    const navbar = document.querySelector('.navbar');
-
 
     themeToggle.addEventListener('click', () => {
         // Alternar el tema
@@ -34,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Al hacer clic en el botón, desplazar suavemente hacia arriba
     backToTopButton.addEventListener('click', function () {
-        const scrollDuration = 1500; // Duración en milisegundos (1.5 segundos)
+        const scrollDuration = 500; // Duración en milisegundos (1.5 segundos)
         const start = window.scrollY;
         const startTime = performance.now();
 
@@ -55,23 +53,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Nueva funcionalidad: Filtrado de imágenes
+    const gallery = document.getElementById('gallery'); // Definir el contenedor de la galería
+
+    // Guardar la altura original del contenedor antes de ocultar las imágenes
+    const originalHeight = gallery.offsetHeight;
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const filter = button.getAttribute('data-filter');
+            const visibleItems = Array.from(galleryItems).filter(item => filter === 'all' || item.getAttribute('data-category') === filter);
 
+            // Activar el botón seleccionado y desactivar los demás
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
+            // Ocultar todas las imágenes primero con una transición suave
             galleryItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                } else {
+                item.classList.add('hidden');
+                setTimeout(() => {
                     item.style.display = 'none';
-                }
+                }, 500); // Asegurar que todas se oculten antes de mostrar las nuevas
             });
+
+            // Ajustar la altura del contenedor al inicio para evitar el salto de contenido
+            if (visibleItems.length > 0) {
+                gallery.style.height = `${originalHeight}px`; // Fijar la altura si hay imágenes para mostrar
+            }
+
+            // Mostrar las imágenes correspondientes después de que todas las imágenes se oculten
+            setTimeout(() => {
+                let totalVisible = 0; // Contar cuántos elementos se muestran
+
+                visibleItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.display = 'block'; // Asegurar que esté visible antes de animar
+                        item.classList.remove('hidden');
+                        item.classList.add('showing');
+                        totalVisible++; // Contamos cuántos elementos se muestran
+                        setTimeout(() => {
+                            item.classList.remove('showing'); // Finaliza la animación de aparición
+                        }, 600); // Tiempo para completar la animación
+                    }, index * 150); // Retraso en base al índice para un efecto secuencial
+                });
+
+                // Ajustar la altura del contenedor al final de la carga
+                setTimeout(() => {
+                    if (totalVisible === 0) {
+                        // Si no hay imágenes visibles, colapsamos el contenedor
+                        gallery.style.height = 'auto';
+                    } else {
+                        // Si hay imágenes visibles, quitar la altura fija para permitir la transición normal
+                        gallery.style.height = ''; // Restablecer a su altura natural
+                    }
+                }, visibleItems.length * 150 + 600); // Tiempo suficiente para que aparezcan todas
+            }, 500); // Esperar a que todas las imágenes se oculten completamente
         });
     });
 
+
+
+    // Aumente el espacio al desplegar el menú de navegación
     navbarToggler.addEventListener('click', function () {
         const isCollapsed = navbarToggler.classList.contains('collapsed'); // Verifica si está colapsado
 
