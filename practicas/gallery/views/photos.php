@@ -1,3 +1,6 @@
+<?php
+global $image;
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -17,8 +20,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Dashboard</a>
+    <div class="container">
+        <a class="navbar-brand" href="../backend/Dashboard.php">Dashboard</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../views/dashboard.php">Volver a la Galería</a>
+                    <a class="nav-link" href="../backend/Dashboard.php">Volver a la Galería</a>
                 </li>
             </ul>
         </div>
@@ -36,12 +39,12 @@
 <div class="container mt-5 pt-5">
     <div class="row">
         <div class="col-md-8">
-            <img src="<?php echo htmlspecialchars($image['src']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($image['title']); ?>">
+            <img src="<?php echo htmlspecialchars($image[0]['image_path']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($image[0]['title']); ?>">
         </div>
         <div class="col-md-4">
-            <h2><?php echo htmlspecialchars($image['title']); ?></h2>
-            <p><strong>Categoría:</strong> <?php echo htmlspecialchars($image['category']); ?></p>
-            <p><?php echo htmlspecialchars($image['description']); ?></p>
+            <h2><?php echo htmlspecialchars($image[0]['title']); ?></h2>
+            <p><strong>Categoría:</strong> <?php echo htmlspecialchars($image[0]['category']); ?></p>
+            <p><?php echo htmlspecialchars($image[0]['description']); ?></p>
             <a href="../views/dashboard.php" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver a la Galería</a>
         </div>
     </div>
