@@ -1,3 +1,4 @@
+<?php global $image; ?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 <head>
