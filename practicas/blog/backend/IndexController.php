@@ -1,15 +1,15 @@
 <?php
 require_once '../backend/Connection.php';
 
-class Index
+class IndexController
 {
-    function index()
+    function IndexController()
     {
         require "../views/index.view.php";
     }
 }
 
-$index = new Index();
-$index->index();
+$index = new IndexController();
+$index->IndexController();
 
 //$db = Connection::getConnection();

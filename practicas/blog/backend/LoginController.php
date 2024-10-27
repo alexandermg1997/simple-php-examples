@@ -23,7 +23,8 @@ class LoginController
                     'user' => [
                         'id' => $user['id'],
                         'nombre' => $user['nombre'],
-                        'email' => $user['email']
+                        'email' => $user['email'],
+                        'rol' => $user['rol']
                     ]
                 ];
             } else {
@@ -57,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
         $_SESSION['user'] = $result['user'];
         $_SESSION['last_activity'] = time();
-        header('Location: Index.php');
+        header('Location: IndexController.php');
         exit();
     } else {
         $error_message = $result['message'];
