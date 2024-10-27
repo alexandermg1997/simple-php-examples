@@ -34,77 +34,16 @@
 
 </head>
 <body>
-<header class="my-5 py-5">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Mi primer blog</a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<?php require_once 'header.view.php'; ?>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fab fa-youtube"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <a class="nav-link" href="#"><i class="fa fa-cog"></i></a>
-                    </li>
-                    <li class="nav-item me-1">
-                        <form name="busqueda" class="buscar"
-                              action="<?= BLOG_CONFIG['url_base']; ?>backend/buscar.php"
-                              method="GET">
-                            <label><input class="form-control" type="text" name="buscar"
-                                          placeholder="Buscar..."></label>
-                            <button type="submit" class="btn btn-secondary mb-1"><i class="fa fa-search"></i></button>
-                        </form>
-                    </li>
-
-                    <?php if (isset($_SESSION['user'])): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= BLOG_CONFIG['url_base']; ?>backend/cerrar.php"><i
-                                        class="fa fa-sign-out-alt"></i> Cerrar
-                                sesión</a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div class="container my-5 py-5 bg-light">
-    <div class="row">
-        <div class="col-md-8 col-lg-6 mx-auto">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Mi primer blog</h5>
-                    <img src="<?php echo BLOG_CONFIG['url_base']; ?>img/blog.jpg" alt="Blog" class="img-fluid">
-                    <p class="fw-light fst-italic fs-6 text-end">Fecha de publicación: <?php echo date('d/m/Y'); ?></p>
-                    <p class="card-text">Este es un blog de ejemplo para aprender a crear un blog con PHP y
-                        Bootstrap.</p>
-                    <a href="#" class="btn btn-primary">Obtener mas información</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Contenedor principal -->
+<div class="main-content">
+    <?php require_once 'articulos.view.php'; ?>
+    <?php require_once 'paginacion.view.php'; ?>
 </div>
+
+<?php require_once 'footer.view.php'; ?>
+
 </body>
 </html>
