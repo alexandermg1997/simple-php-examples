@@ -1,7 +1,7 @@
 <header class="py-5">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Mi primer blog</a>
+            <a class="navbar-brand" href="<?= BLOG_CONFIG['url_base']; ?>backend/IndexController.php">Mi primer blog</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

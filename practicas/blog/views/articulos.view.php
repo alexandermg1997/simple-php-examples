@@ -1,5 +1,5 @@
 <?php
-global $posts
+global $posts;
 ?>
 <div class="container">
     <?php foreach ($posts as $post): ?>
@@ -12,7 +12,8 @@ global $posts
                         <p class="fw-light fst-italic fs-6 text-end mt-1">Fecha de
                             publicación: <?= $post['fecha']; ?></p>
                         <p class="card-text"><?= $post['extracto'] ?></p>
-                        <a href="#" class="btn btn-primary">Obtener mas información</a>
+                        <a href="../backend/SingleController.php?id=<?= $post['id']; ?>"
+                           class="btn btn-primary">Obtener mas información</a>
                     </div>
                 </div>
             </div>

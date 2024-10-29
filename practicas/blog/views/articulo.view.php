@@ -1,8 +1,8 @@
 <?php
-global $posts
+global $post
 ?>
 <div class="container">
-    <?php foreach ($posts as $post): ?>
+    <?php if (isset($post)): ?>
         <div class="row mt-4">
             <div class="col-12 mx-auto">
                 <div class="card shadow-sm">
@@ -11,11 +11,10 @@ global $posts
                         <img src="<?= $post['thumb'] ?>" alt="Blog" class="img-fluid">
                         <p class="fw-light fst-italic fs-6 text-end mt-1">Fecha de
                             publicación: <?= $post['fecha']; ?></p>
-                        <p class="card-text"><?= $post['extracto'] ?></p>
-                        <a href="#" class="btn btn-primary">Obtener mas información</a>
+                        <p class="card-text"><?= $post['texto'] ?></p>
                     </div>
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    <?php endif; ?>
 </div>

@@ -1,6 +1,13 @@
 <?php
 require_once '../backend/Connection.php';
 
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header('Location: LoginController.php');
+    exit;
+}
+
 class SingleController
 {
     private PDO $db;
@@ -10,37 +17,12 @@ class SingleController
         $this->db = Connection::getConnection();
     }
 
-    public function getPostPaginado(int $pagina, int $postPorPagina): false|array
+    public function getPost(int $id): false|array
     {
-        // Calcular el índice de inicio
-        $inicio = ($pagina > 1) ? ($pagina * $postPorPagina - $postPorPagina) : 0;
-
-        // Preparar la consulta para obtener los artículos
-        $stmt = $this->db->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM articulos LIMIT :inicio, :postPorPagina");
-
-        // Vincular parámetros
-        $stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
-        $stmt->bindParam(':postPorPagina', $postPorPagina, PDO::PARAM_INT);
-
-        // Ejecutar la consulta
+        $stmt = $this->db->prepare("SELECT * FROM articulos WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-
-        // Obtener los resultados
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Obtener el número total de imágenes
-        $totalPost = $this->db->query('SELECT COUNT(*) as total FROM articulos')->fetch(PDO::FETCH_ASSOC)['total'];
-
-        // Calcular el número de páginas
-        $numeroDePaginas = (int)ceil($totalPost / $postPorPagina);
-
-        // Retornar los resultados y la paginación (opcional)
-        return [
-            'posts' => $resultados,
-            'totalPaginas' => $numeroDePaginas,
-            'paginaActual' => $pagina,
-            'totalPost' => $totalPost
-        ];
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     function SingleView(): void
@@ -51,14 +33,7 @@ class SingleController
 
 $single = new SingleController();
 
-$pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
-$postPorPagina = 5; // Cantidad de artículos por página
-$postPaginados = $single->getPostPaginado($pagina, $postPorPagina);
-
-// Procesar los resultados
-$posts = $postPaginados['posts'];
-$totalPaginas = $postPaginados['totalPaginas'];
-$paginaActual = $postPaginados['paginaActual'];
-$totalPost = $postPaginados['totalPost'];
+$id = (isset($_GET['id'])) ? (int)$_GET['id'] : 1;
+$post = $single->getPost($id);
 
 $single->SingleView();
