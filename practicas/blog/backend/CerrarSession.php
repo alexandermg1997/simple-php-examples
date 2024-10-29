@@ -2,7 +2,7 @@
 
 use JetBrains\PhpStorm\NoReturn;
 
-class Cerrar
+class CerrarSession
 {
     #[NoReturn] function cerrarSession(): void
     {
@@ -18,7 +18,5 @@ class Cerrar
     }
 }
 
-$cerrar = new Cerrar();
+$cerrar = new CerrarSession();
 $cerrar->cerrarSession();
-
-?>

@@ -1,14 +1,7 @@
 <?php
 require_once '../backend/Connection.php';
 
-session_start();
-
-if (!isset($_SESSION['user'])) {
-    header('Location: LoginController.php');
-    exit;
-}
-
-class IndexController
+class SingleController
 {
     private PDO $db;
 
@@ -50,17 +43,17 @@ class IndexController
         ];
     }
 
-    function IndexView(): void
+    function SingleView(): void
     {
-        require "../views/index.view.php";
+        require "../views/single.view.php";
     }
 }
 
-$index = new IndexController();
+$single = new SingleController();
 
 $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
 $postPorPagina = 5; // Cantidad de artículos por página
-$postPaginados = $index->getPostPaginado($pagina, $postPorPagina);
+$postPaginados = $single->getPostPaginado($pagina, $postPorPagina);
 
 // Procesar los resultados
 $posts = $postPaginados['posts'];
@@ -68,4 +61,4 @@ $totalPaginas = $postPaginados['totalPaginas'];
 $paginaActual = $postPaginados['paginaActual'];
 $totalPost = $postPaginados['totalPost'];
 
-$index->IndexView();
+$single->SingleView();

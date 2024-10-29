@@ -18,7 +18,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!--My CSS-->
-    <link rel="stylesheet" href="<?= BLOG_CONFIG['url_base']; ?>css/style.css">
+    <link rel="stylesheet" href="<?= BLOG_CONFIG['url_base']; ?>/css/style.css">
 
     <!-- jQuery and Bootstrap JS -->
     <script defer src="https://code.jquery.com/jquery-3.7.1.js"
@@ -32,37 +32,17 @@
     <!-- Font Awesome JS -->
     <script defer src="https://kit.fontawesome.com/f131cf0926.js" crossorigin="anonymous"></script>
 
-    <!-- JavaScript -->
-    <script src="<?= BLOG_CONFIG['url_base']; ?>js/script.js"></script>
 </head>
 <body>
 
-<div class="scroll-container">
-    <div class="scroll-content" id="scrollContent">
-        <?php require_once 'header.view.php'; ?>
+<?php require_once 'header.view.php'; ?>
 
-        <!-- Contenedor principal -->
-        <div class="main-content px-1">
-            <?php require_once 'articulos.view.php'; ?>
-            <?php require_once 'paginacion.view.php'; ?>
-        </div>
-
-        <!-- Añade este botón junto al botón de subir -->
-        <button id="back-to-top" class="btn btn-primary scroll-btn" title="Volver arriba">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        <button id="scroll-to-bottom" class="btn btn-primary scroll-btn" title="Ir abajo">
-            <i class="fas fa-arrow-down"></i>
-        </button>
-        <?php require_once 'footer.view.php'; ?>
-    </div>
-    <!-- Scrollbar -->
-    <div class="custom-scrollbar">
-        <div class="scrollbar-track"></div>
-        <div class="scrollbar-thumb" id="scrollbarThumb"></div>
-    </div>
+<!-- Contenedor principal -->
+<div class="main-content">
+    <?php require_once 'articulo.view.php'; ?>
 </div>
 
+<?php require_once 'footer.view.php'; ?>
 
 </body>
 </html>

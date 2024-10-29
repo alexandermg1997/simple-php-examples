@@ -30,8 +30,8 @@ global $error_message;
 <body>
 <div class="container">
     <div class="row justify-content-center align-items-center min-vh-100">
-        <div class="col-md-6 col-lg-4">
-            <div class="login-container p-4 p-md-5">
+        <div class="col-lg-5 col-md-8 col-sm-10">
+            <div class="login-container p-4 p-md-4">
                 <h2 class="text-center mb-4"><i class="fa-solid fa-user-circle"></i> Login</h2>
                 <?php if ($error_message): ?>
                     <div class="alert alert-danger" role="alert">

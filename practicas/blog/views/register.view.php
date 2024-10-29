@@ -32,8 +32,8 @@ global $error_message, $success_message, $nombre, $email;
 <body>
 <div class="container">
     <div class="row justify-content-center align-items-center min-vh-100">
-        <div class="col-md-6 col-lg-4">
-            <div class="login-container pt-4 pb-4 ps-5 pe-5">
+        <div class="col-lg-5 col-md-8 col-sm-10">
+            <div class="login-container  p-4 p-md-4">
                 <h2 class="text-center mb-2">Registro <i class="fa-solid fa-user-plus"></i></h2>
                 <?php if ($error_message): ?>
                     <div class="alert alert-danger" role="alert">

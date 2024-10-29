@@ -43,7 +43,7 @@
 
                     <?php if (isset($_SESSION['user'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BLOG_CONFIG['url_base']; ?>backend/cerrar.php"><i
+                            <a class="nav-link" href="<?= BLOG_CONFIG['url_base']; ?>backend/CerrarSession.php"><i
                                         class="fa fa-sign-out-alt"></i> Cerrar
                                 sesión</a>
                         </li>
