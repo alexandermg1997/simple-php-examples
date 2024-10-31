@@ -26,6 +26,9 @@ global $error_message;
 
     <!-- Font Awesome JS -->
     <script defer src="https://kit.fontawesome.com/f131cf0926.js" crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script defer src="../js/login.js"></script>
 </head>
 <body>
 <div class="container">
@@ -52,6 +55,9 @@ global $error_message;
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                             <input type="password" class="form-control" id="password" name="password" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-custom text-white w-100"><i class="fas fa-sign-in-alt"></i>

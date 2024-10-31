@@ -27,7 +27,7 @@ global $error_message, $success_message, $nombre, $email;
     <script defer src="https://kit.fontawesome.com/f131cf0926.js" crossorigin="anonymous"></script>
 
     <!-- JavaScript -->
-    <script defer src="../js/script.js"></script>
+    <script defer src="../js/login.js"></script>
 </head>
 <body>
 <div class="container">
