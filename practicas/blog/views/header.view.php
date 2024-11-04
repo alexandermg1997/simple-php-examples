@@ -33,9 +33,9 @@
                     </li>
                     <li class="nav-item me-1">
                         <form name="busqueda" class="buscar"
-                              action="<?= BLOG_CONFIG['url_base']; ?>backend/buscar.php"
+                              action="<?= BLOG_CONFIG['url_base']; ?>backend/BuscarController.php"
                               method="GET">
-                            <label><input class="form-control" type="text" name="buscar"
+                            <label><input class="form-control" type="text" name="busqueda"
                                           placeholder="Buscar..."></label>
                             <button type="submit" class="btn btn-secondary mb-1"><i class="fa fa-search"></i></button>
                         </form>

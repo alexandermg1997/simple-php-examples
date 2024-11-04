@@ -33,7 +33,17 @@ class SingleController
 
 $single = new SingleController();
 
-$id = (isset($_GET['id'])) ? (int)$_GET['id'] : 1;
-$post = $single->getPost($id);
+// Obtener el ID de la URL
+$id = (isset($_GET['id']) && is_numeric($_GET['id'])) ? (int)$_GET['id'] : 0;
+
+// Verificar si el ID es 0 o no es un número válido
+if ($id <= 0) {
+    // Redirigir al dashboard
+    header("Location: IndexController.php");
+    exit();
+} else {
+    // Ejecutar la función para obtener el post
+    $post = $single->getPost($id);
+}
 
 $single->SingleView();

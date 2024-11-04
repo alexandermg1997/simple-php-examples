@@ -59,7 +59,7 @@ class IndexController
 $index = new IndexController();
 
 $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
-$postPorPagina = 5; // Cantidad de artículos por página
+$postPorPagina = BLOG_CONFIG['posts_per_page']; // Cantidad de artículos por página
 $postPaginados = $index->getPostPaginado($pagina, $postPorPagina);
 
 // Procesar los resultados
