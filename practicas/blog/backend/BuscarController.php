@@ -1,5 +1,6 @@
 <?php
 require_once '../backend/Connection.php';
+require_once '../backend/FunctionController.php';
 
 session_start();
 
@@ -39,9 +40,11 @@ class BuscarController
 }
 
 $buscar = new BuscarController();
+$funciones = new FunctionController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET['busqueda'])) {
-    $posts = $buscar->getForSearch($_GET['busqueda']);
+    $busqueda = $funciones->limpiarDatos($_GET['busqueda']) ?? '';
+    $posts = $buscar->getForSearch($busqueda);
     $buscar->BuscarView();
 } else {
     header('Location: IndexController.php');
