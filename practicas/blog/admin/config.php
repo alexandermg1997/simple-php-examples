@@ -1,13 +1,22 @@
 <?php
 
+//const DB_CONFIG = [
+//    'host' => 'autorack.proxy.rlwy.net',
+//    'port' => '59716',
+//    'dbname' => 'curso_blog',
+//    'username' => 'root',
+//    'password' => 'MqwWgOLHcmdoVukKKGfohqdigwQXMwWY',
+//    'charset' => 'utf8mb4'
+//];  // Configuración de la base de datos remota
+
 const DB_CONFIG = [
-    'host' => 'autorack.proxy.rlwy.net',
-    'port' => '59716',
-    'dbname' => 'curso_blog',
-    'username' => 'root',
-    'password' => 'MqwWgOLHcmdoVukKKGfohqdigwQXMwWY',
+    'host' => 'localhost',
+    'port' => '3306',
+    'dbname' => 'curso_bloc',
+    'username' => 'erasmomg',
+    'password' => 'aldea*2017',
     'charset' => 'utf8mb4'
-];  // Configuración de la base de datos
+];  // Configuración de la base de datos local
 
 const BLOG_CONFIG = [
     'title' => 'Blog',

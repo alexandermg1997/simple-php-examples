@@ -65,7 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
         $_SESSION['user'] = $result['user'];
         $_SESSION['last_activity'] = time();
-        header('Location: IndexController.php');
+        if ($result['user']['rol'] === 'administrador') {
+            header('Location: ../admin/AdminController.php');
+        } else {
+            header('Location: IndexController.php');
+        }
         exit();
     } else {
         $error_message = $result['message'];
