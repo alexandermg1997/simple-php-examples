@@ -1,0 +1,31 @@
+body {
+    background: linear-gradient(to right, #141e30, #243b55) no-repeat center center fixed; /* Degradado de colores oscuros */
+    color: #fff; /* El texto debe ser claro para contrastar con el fondo oscuro */
+}
+
+.ajs-message.ajs-success {
+    border-radius: 0.5rem !important; /* Bordes redondeados */
+    background: linear-gradient(to right, #00b894, #0984e3) !important; /* Gradiente de verde a azul */
+    color: #fff !important; /* Texto blanco para contraste */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra del texto para mejorar legibilidad */
+    font-size: 16px; /* Aumentar tamaño de la fuente para mejor legibilidad */
+}
+
+.ajs-message.ajs-error {
+    border-radius: 0.5rem !important; /* Bordes redondeados */
+    background: linear-gradient(to right, #ff4e50, #8e44ad) !important; /* Gradiente de rojo a morado */
+    color: #fff !important; /* Texto blanco para contraste */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra del texto para mejorar legibilidad */
+    font-size: 16px; /* Aumentar tamaño de la fuente para mejor legibilidad */
+}
+
+.my-button {
+    background: linear-gradient(to right, #00b894, #0984e3) !important; /* Gradiente de verde a azul */
+    color: white; /* Color del texto del botón */
+    padding: 10px 20px; /* Espacio alrededor del texto del botón */
+    border: none; /* Sin bordes */
+    border-radius: 4px; /* Ajusta el valor según lo redondeado que desees */
+    cursor: pointer; /* Cursor del ratón para indicar que se puede hacer clic */
+}

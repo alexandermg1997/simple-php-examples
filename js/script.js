@@ -227,3 +227,11 @@ let tableRailway = new DataTable('#myTableRailway', {
         {data: 'price'},
     ],
 });
+
+new DataTable('#myTableFixedColumns', {
+    fixedColumns: {
+        start: 3
+    },
+    scrollCollapse: true,
+    scrollX: true
+});
